@@ -33,5 +33,3 @@ def load_game():
         return -1
 
     return f'Game = {games[choose_game-1]}, Level = {dif_level}.', choose_game, dif_level
-
-#rearaefdlakf
