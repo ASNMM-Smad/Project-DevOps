@@ -2,6 +2,8 @@ from Live import welcome, load_game
 from GuessGame import guess_game
 from CurrencyRoulellte import get_currency_value
 from MemoryGame import memory_game
+from MainScores import score_server
+from score import add_score
 import time
 
 def get_ready():
@@ -9,10 +11,10 @@ def get_ready():
         print(f"The game will begin in {5-i}")
         time.sleep(i)
 
-def play(game, lvl):
+def play(game, diff):
     get_ready()
     if game == 1:
-        play = memory_game(lvl)
+        play = memory_game(diff)
         print (play)
         if play == True:
             print('Winner')
@@ -22,7 +24,7 @@ def play(game, lvl):
             return -1
 
     if game == 2:
-        play = guess_game(lvl)
+        play = guess_game(diff)
         res = play[1]
         if res == 1:
             print('Winner')
@@ -32,7 +34,7 @@ def play(game, lvl):
             return -1
 
     if game == 3:
-        play = get_currency_value(lvl)
+        play = get_currency_value(diff)
         if play == True:
             print('Winner')
             return 1
@@ -58,6 +60,12 @@ while True:
     else:
         print(loading[0])
         game = loading[1]
-        lvl = loading[2]
-        play(game, lvl)
+        diff = loading[2]
+        winORlose = play(game, diff)
+        if winORlose == 1:
+            total_new_score = add_score(diff)
+            show_new_score = score_server(total_new_score, status_code=0)
+            #print(total_new_score)
+        else:
+            break
         break

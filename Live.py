@@ -10,6 +10,7 @@ def load_game():
     games_list = {"Memory Game": "A sequence of numbers will appear for 1 second and you have to guess it back.", 
                 "Guess Game":"Guess a number and see if you chose like the computer.",
                 "Currency Roulellte": "try and guess the value of a random amount of USD in ILS."}
+
     print("\nChoose a game by its number:")
     count = 1
     for key, value in games_list.items():
