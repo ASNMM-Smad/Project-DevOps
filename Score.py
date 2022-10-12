@@ -1,6 +1,6 @@
 import utils, fileinput
 
-def scoring(new_score, diff, name = 'Asaf_Smadja'):
+def add_score(new_score, diff, name = 'Asaf_Smadja'):
     new_score = (diff * 3) + 5 + new_score
     old_score = ''
     
