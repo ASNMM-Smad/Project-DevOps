@@ -10,6 +10,7 @@ def guess_game(user_lvl):
         if user_num == secret_num:
             print('Bingo!!!')
             win = 1
+            break
         elif user_num < secret_num:
             print('Secret number is higher')
         elif user_num > secret_num:
