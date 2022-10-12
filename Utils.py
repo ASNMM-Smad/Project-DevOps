@@ -1,11 +1,11 @@
-import time
+import time, os
 
-SCORES_FILE_NAME = r"C:\Users\Administrator\DevOps Expert\Scores.txt"
+current_path = os.getcwd()
+SCORES_FILE_NAME = rf"{current_path}\project\score.txt"
+
 BAD_RETURN_CODE = 666
 
-
 def screenCleaner():
-
     print ("TEST", end='\r')
     time.sleep(2)
 
