@@ -17,20 +17,16 @@ def load_game():
         print(f"{count}){key}: {value}\n", end="")
         games.append(key)
         count += 1
-    choose_game = input(f"#### Choose 1-{count-1}: ")
-    dif_level = input("Please choose game difficulty from 1 to 5: ")
-
-    if (choose_game.isdigit()) and (dif_level.isdigit()):
-        choose_game = int(choose_game)
-        dif_level = int(dif_level)
-        if (3 >= choose_game >= 0) and (5 >= dif_level >= 0):
-            print("#####################################")
-            pass
-        else:
-            print('\nProvided values do NOT exist.')    
-            return -1    
-    else:
-        print("\nProvided value is NOT a Number, try again.")
-        return -1
-
-    return f'Game = {games[choose_game-1]}, Level = {dif_level}.', choose_game, dif_level
+    
+    while True:
+        choose_game = input(f"#### Choose 1-{count-1}: ")
+        dif_level = input("Please choose game difficulty from 1 to 5: ")
+        if (choose_game.isdigit()) and (dif_level.isdigit()):
+            choose_game = int(choose_game)
+            dif_level = int(dif_level)
+            if (3 >= choose_game >= 0) and (5 >= dif_level >= 0):
+                print("##"*20)
+                return f'Game = {games[choose_game-1]}, Level = {dif_level}.', choose_game, dif_level
+            else:
+                print("\nSomething went wrong, please try again.")
+                continue
