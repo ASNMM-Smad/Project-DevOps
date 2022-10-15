@@ -2,7 +2,7 @@ from Live import welcome, load_game
 from games_dir.GuessGame import guess_game
 from games_dir.CurrencyRoulellte import get_currency_value
 from games_dir.MemoryGame import memory_game
-from MainScores import score_server
+from MainScores import score_server, wait_for_calling
 from score import add_score
 import time
 
@@ -15,7 +15,7 @@ def get_ready():
         time.sleep(i)
 
 def play(game, diff):
-    get_ready()
+    #get_ready()
     games_list = [None, memory_game, guess_game, get_currency_value]
     for i in range(len(games_list)):
         if i == game:
@@ -31,11 +31,8 @@ def play(game, diff):
 while True:
     loading = load_game()
     print(loading[0])
-    winORlose = play(loading[1], loading[2])
-    if winORlose == 1:
-        total_new_score = add_score(loading[2])
-        show_new_score = score_server(total_new_score, status_code=0)
-        #print(total_new_score)
-    else:
-        break
+    play(loading[1], loading[2])
+    total_new_score = add_score(loading[2])
+    show_score = wait_for_calling()
+    #print(total_new_score)
     break

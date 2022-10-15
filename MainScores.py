@@ -1,11 +1,13 @@
-
 from flask import Flask
+import utils
+import threading
 
 app = Flask(__name__)
 
 @app.route('/')
-def score_server(score, status_code):
-    app.run()
+def score_server(status_code=0):
+    with open(utils.SCORES_FILE_NAME, 'r+') as reading:
+        score = reading.read()
     if status_code == 0:
         return f'''<html>
         <head>
@@ -16,7 +18,6 @@ def score_server(score, status_code):
             <h1>The score is <div id="score">{score}</div></h1>
         </body>
         </html>'''
-
 
     else:
         return f'''<html>
@@ -29,6 +30,11 @@ def score_server(score, status_code):
         </body>
         </html>'''
 
-'''if __name__ == '__main__':
-    app.run()
-'''
+
+def run_app():
+    app.run(host='127.0.0.1', port=5000)
+
+def wait_for_calling():
+    first_thread = threading.Thread(target=run_app)
+    first_thread.start()
+
