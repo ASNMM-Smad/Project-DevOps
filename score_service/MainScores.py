@@ -32,7 +32,6 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0',port=8000, debug=True)
 
 
-
 '''
 #import threading, logging
 #from  .. tests.e2e import test_scores_service
