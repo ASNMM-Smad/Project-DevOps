@@ -2,8 +2,7 @@ from Live import welcome, load_game
 from games_dir.GuessGame import guess_game
 from games_dir.CurrencyRoulellte import get_currency_value
 from games_dir.MemoryGame import memory_game
-from MainScores import score_server, wait_for_calling
-from score import add_score
+from score_service.score import add_score
 import time
 
 ### Welcome
@@ -12,10 +11,11 @@ print(welcome())
 def get_ready():
     for i in range(0,5):
         print(f"The game will begin in {5-i}")
-        time.sleep(i)
+        time.sleep(1)
 
 def play(game, diff):
-    #get_ready()
+    if game == 1:
+        get_ready()
     games_list = [None, memory_game, guess_game, get_currency_value]
     for i in range(len(games_list)):
         if i == game:
@@ -33,6 +33,4 @@ while True:
     print(loading[0])
     play(loading[1], loading[2])
     total_new_score = add_score(loading[2])
-    show_score = wait_for_calling()
-    #print(total_new_score)
     break
