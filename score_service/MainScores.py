@@ -28,10 +28,10 @@ def score_server(status_code=0):
         </body>
         </html>'''
 
-def starting_service():
-    app.run(host='127.0.0.1', port=5000)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0',port=8000, debug=True)
 
-starting_service()
+
 
 '''
 #import threading, logging
@@ -45,4 +45,7 @@ def run_app():
 def wait_for_calling():
     first_thread = threading.Thread(target=run_app)
     first_thread.start()
+
+def starting_service():
+    app.run(host='127.0.0.1', port=5000)
 '''
