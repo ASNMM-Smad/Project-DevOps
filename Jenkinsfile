@@ -4,7 +4,7 @@ pipeline {
         stage ("verify tooling"){
             steps{
                 sh '''
-                    docker version
+                    python --version
                 '''
             }
         }
