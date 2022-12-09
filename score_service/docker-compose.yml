@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  score-srv:
+    build: .
+    image: asmadjguru/wog-score-app:latest
+    ports:
+    - "8777:5000"
+    volumes:
+      - ./score.txt:/app/score.txt
