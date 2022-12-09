@@ -4,7 +4,7 @@ pipeline {
         stage ("verify tooling"){
             steps{
                 sh '''
-                    python --version
+                    python3 --version
                 '''
             }
         }
