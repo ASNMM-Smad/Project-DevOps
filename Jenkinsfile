@@ -1,6 +1,44 @@
 pipeline {
     agent any
     stages{
+        stage ("verify tooling"){
+            steps{
+                sh '''
+                    docker version
+                '''
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        '''
         stage('Checking GitHub for changes') {
             steps {
               checkout([$class: 'GitSCM', 
@@ -18,4 +56,4 @@ pipeline {
             }
         }
     }
-}
+}'''
